@@ -105,44 +105,47 @@ div.topheader {
 }
 
 #header {
-    max-width: 1170px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .logo_wrap {
     float: left;
-    display: table;
-    margin: 5px 0;
+    display: block;
+    margin: 0;
 }
 
 #logo {
-    display: table-cell;
+    display: block;
     vertical-align: middle;
 }
 
 #logo a {
-    margin: 15px 5px 0 0;
+    margin: 0;
     display: block;
 }
 
 #logo img {
     display: block;
+    height: 60px;
+    width: auto;
 }
 
 /* Header Contact Region */
 #header .region {
     float: right;
-    margin: 10px 5px 0 5px;
+    margin: 0;
     vertical-align: top;
-    font-size: 16px;
-    min-width: 900px;
+    font-size: 14px;
 }
 
 .region-contact-no .content table {
     background: #FFF none repeat scroll 0 0;
     border: none;
-    width: 100%;
     margin-bottom: 0;
 }
 
@@ -150,25 +153,36 @@ div.topheader {
     background: #fff none repeat scroll 0 0;
     border: none;
     color: #000;
-    padding: 15px 18px 8px 18px;
+    padding: 5px 20px;
     text-align: left;
     vertical-align: top;
-    width: 25%;
     line-height: 1.5em;
+    font-size: 13px;
 }
 
 .region-contact-no h2 {
     font-weight: bold;
     color: #000;
-    font-size: 18px;
+    font-size: 14px;
     margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.region-contact-no h2 img {
+    width: 35px;
+    height: auto;
+    float: none !important;
+    margin: 0 !important;
 }
 
 .region-contact-no h4 {
-    font-size: 16px;
+    font-size: 13px;
     text-align: left;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 3px;
+    text-transform: uppercase;
 }
 
 /* Buttons */
@@ -177,9 +191,10 @@ a.button:link, a.button:visited {
     color: #FFF;
     text-decoration: none;
     border-radius: 3px;
-    padding: 10px 18px;
+    padding: 8px 16px;
     display: inline-block;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 a.button:hover {
@@ -192,9 +207,10 @@ a.button2:link, a.button2:visited {
     color: #FFF;
     text-decoration: none;
     border-radius: 3px;
-    padding: 10px 18px;
+    padding: 8px 16px;
     display: inline-block;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 a.button2:hover {
@@ -224,8 +240,12 @@ a.button2:hover {
 }
 
 .full-wrap {
-    max-width: 1170px;
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #main-menu {
@@ -248,15 +268,17 @@ a.button2:hover {
 }
 
 #main-menu a {
-    padding: 20px 28px;
+    padding: 16px 24px;
     display: block;
     text-decoration: none;
     color: #FFF;
     line-height: 100%;
     white-space: nowrap;
     text-transform: uppercase;
-    border-right: 1px solid #ac0022;
-    font-size: 15px;
+    border-right: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 #main-menu li.leaf.last a { border-right: none; }
@@ -273,7 +295,7 @@ a.button2:hover {
     padding: 0;
     margin: 0;
     background: #333;
-    top: 55px;
+    top: 48px;
     overflow: visible !important;
 }
 
@@ -291,14 +313,14 @@ a.button2:hover {
 }
 
 #main-menu li li a {
-    min-width: 200px;
+    min-width: 180px;
     margin: 0;
     border-bottom: 1px solid #525252;
     text-align: left;
     overflow: hidden;
-    padding: 16px 20px;
+    padding: 14px 18px;
     color: #DEDEDE;
-    font-size: 14px;
+    font-size: 13px;
     border-right: 0;
 }
 
@@ -319,12 +341,16 @@ a.button2:hover {
 /* Social Icons */
 .social-icons {
     text-align: right;
-    float: right;
-    margin-top: 8px;
+    float: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
 }
 
 .social-icons ul {
     margin: 0;
+    display: flex;
+    gap: 5px;
 }
 
 .social-icons li {
@@ -332,32 +358,31 @@ a.button2:hover {
 }
 
 .social-icons li a {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     color: #FFF;
-    padding: 8px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     background: #424242;
     border-radius: 3px;
-    border: 1px solid #424242;
+    border: none;
     line-height: 100%;
     text-align: center;
     font-size: 16px;
 }
 
 .social-icons li a:hover {
-    background: #363535;
-    color: #d7002a;
-    border: 1px solid #363535;
+    background: #333;
+    color: #FFF;
 }
 
 /* Slideshow */
 .slideshow {
     position: relative;
-    margin-top: 185px;
+    margin-top: 130px;
 }
 
 .slider-wrapper {
@@ -388,36 +413,42 @@ a.button2:hover {
 }
 
 .slidecap {
-    padding: 40px 50px;
-    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+    padding: 35px 45px;
+    background: rgba(0, 0, 0, 0.55) none repeat scroll 0 0;
+    text-align: center;
 }
 
 .slidecap h1 {
-    font-size: 42px;
+    font-size: 36px;
     color: #fff;
     font-family: 'Roboto Slab', serif;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .slidecap p {
     padding: 0px;
     background: none;
-    font-size: 22px;
+    font-size: 18px;
     color: #fff;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
+    line-height: 1.6;
 }
 
 .slidecap a:link, .slidecap a:visited {
-    padding: 15px 30px;
+    padding: 14px 28px;
     color: #FFF;
     background-color: #d7002a;
     text-decoration: none;
     border-bottom: none;
-    margin: 20px 0;
+    margin: 15px 0 0 0;
     border-radius: 3px;
     display: inline-block;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .slidecap a:hover {
@@ -427,15 +458,15 @@ a.button2:hover {
 /* Caption Display Container */
 .caption-display {
     position: absolute;
-    top: 27%;
-    width: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 70%;
     font-size: 16px;
     height: auto;
     line-height: 150%;
     text-align: center;
-    margin: 0 auto;
-    left: 30%;
-    margin-left: -10%;
     z-index: 10;
 }
 
@@ -455,10 +486,10 @@ a.button2:hover {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    opacity: .9 !important;
-    background: #FFF;
-    height: 70px;
-    width: 45px;
+    opacity: .85 !important;
+    background: rgba(255, 255, 255, 0.9);
+    height: 50px;
+    width: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -473,14 +504,14 @@ a.button2:hover {
 .nivo-prevNav::before {
     content: '\f053';
     font-family: 'FontAwesome';
-    font-size: 24px;
+    font-size: 18px;
     color: #333;
 }
 
 .nivo-nextNav::before {
     content: '\f054';
     font-family: 'FontAwesome';
-    font-size: 24px;
+    font-size: 18px;
     color: #333;
 }
 
@@ -543,7 +574,8 @@ a.button2:hover {
 /* Brand Links Bar */
 .links {
     color: #000;
-    margin-top: 10px;
+    margin-top: 30px;
+    padding: 20px 0;
 }
 
 #footer .links table,
@@ -551,6 +583,8 @@ a.button2:hover {
     background: #FFF none repeat scroll 0 0;
     border: none;
     width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 #footer .links td,
@@ -558,12 +592,12 @@ a.button2:hover {
     background: #fff none repeat scroll 0 0;
     border: none;
     color: #000;
-    padding: 10px;
+    padding: 15px 20px;
     text-align: center;
 }
 
 .links img {
-    max-height: 80px;
+    max-height: 55px;
     width: auto;
     transition: opacity 0.3s;
 }
@@ -708,7 +742,7 @@ h4 a:hover {
 
 /* Services Page */
 .services-page {
-    margin-top: 185px;
+    margin-top: 130px;
 }
 
 .services-page #container {
