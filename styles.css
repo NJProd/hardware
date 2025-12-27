@@ -78,6 +78,27 @@ html {
     color: #fff;
 }
 
+/* Focus styles for accessibility */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--primary-red);
+    outline-offset: 2px;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--primary-red);
+    outline-offset: 2px;
+}
+
 /* Base Styles */
 body {
     color: var(--text-dark);
@@ -3445,6 +3466,14 @@ button:focus {
     
     .about-content .tagline {
         font-size: 16px;
+    }
+    
+    /* Fix floated images in timeline on mobile */
+    .timeline-image,
+    .timeline-content .timeline-image {
+        float: none !important;
+        width: 100% !important;
+        margin: 0 0 20px 0 !important;
     }
 }
 
