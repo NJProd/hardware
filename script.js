@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add active page indicator to nav
     highlightCurrentPage();
+    
+    // Initialize animated counters
+    initCounters();
+
+});
 
 // Slideshow functionality
 function initSlider() {
@@ -179,13 +184,12 @@ function initMobileMenu() {
         navToggle.addEventListener('click', function(e) {
             e.preventDefault();
             menuContainer.classList.toggle('active');
+            navToggle.classList.toggle('active');
             
             // Update toggle text for accessibility
-            if (menuContainer.classList.contains('active')) {
-                navToggle.textContent = 'Close Menu';
-            } else {
-                navToggle.textContent = 'Navigation';
-            }
+            const isOpen = menuContainer.classList.contains('active');
+            navToggle.setAttribute('aria-expanded', isOpen);
+            navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
         });
     }
     
@@ -445,4 +449,50 @@ function highlightCurrentPage() {
             link.classList.add('current-page');
         }
     });
+}
+
+// Animated counter for trust section numbers
+function initCounters() {
+    const counters = document.querySelectorAll('.trust-number');
+    if (counters.length === 0) return;
+    
+    const counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const finalValue = target.getAttribute('data-count');
+                if (finalValue) {
+                    animateCounter(target, parseInt(finalValue));
+                }
+                counterObserver.unobserve(target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(function(counter) {
+        counterObserver.observe(counter);
+    });
+}
+
+function animateCounter(element, target) {
+    const duration = 2000;
+    const start = 0;
+    const startTime = performance.now();
+    
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease out cubic
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (target - start) * easeProgress);
+        
+        element.textContent = current + (element.getAttribute('data-suffix') || '');
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        }
+    }
+    
+    requestAnimationFrame(updateCounter);
 }
