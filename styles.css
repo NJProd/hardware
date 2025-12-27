@@ -107,7 +107,7 @@ div.topheader {
 #header {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 8px 20px;
+    padding: 5px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -131,8 +131,11 @@ div.topheader {
 
 #logo img {
     display: block;
-    height: 65px;
+    height: 94px;
     width: auto;
+    max-width: none;
+    object-fit: contain;
+    aspect-ratio: auto;
 }
 
 /* Header Contact Region */
@@ -153,32 +156,41 @@ div.topheader {
     background: #fff none repeat scroll 0 0;
     border: none;
     color: #000;
-    padding: 5px 30px;
+    padding: 5px 40px;
     text-align: left;
     vertical-align: top;
-    line-height: 1.5em;
-    font-size: 13px;
+    line-height: 1.4em;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.region-contact-no .td-content {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.region-contact-no .header-icon {
+    width: 40px;
+    height: auto;
+    vertical-align: top;
+    margin-right: 10px;
+    margin-top: 5px;
 }
 
 .region-contact-no h2 {
     font-weight: bold;
     color: #000;
-    font-size: 13px;
-    margin-bottom: 6px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
+    font-size: 25px;
+    margin-bottom: 4px;
+    display: block;
 }
 
 .region-contact-no h2 img {
-    width: 28px;
-    height: auto;
-    float: none !important;
-    margin: 0 !important;
+    display: none;
 }
 
 .region-contact-no h4 {
-    font-size: 13px;
+    font-size: 15px;
     text-align: left;
     font-weight: bold;
     margin-bottom: 3px;
@@ -191,9 +203,9 @@ a.button:link, a.button:visited {
     color: #FFF;
     text-decoration: none;
     border-radius: 3px;
-    padding: 8px 18px;
+    padding: 10px 22px;
     display: inline-block;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -207,9 +219,9 @@ a.button2:link, a.button2:visited {
     color: #FFF;
     text-decoration: none;
     border-radius: 3px;
-    padding: 8px 18px;
+    padding: 10px 22px;
     display: inline-block;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -268,7 +280,7 @@ a.button2:hover {
 }
 
 #main-menu a {
-    padding: 19px 29px;
+    padding: 24px 29px;
     display: block;
     text-decoration: none;
     color: #FFF;
@@ -382,7 +394,8 @@ a.button2:hover {
 /* Slideshow */
 .slideshow {
     position: relative;
-    margin-top: 150px;
+    margin-top: 181px;
+    border-bottom: 3px solid #d7002a;
 }
 
 .slider-wrapper {
@@ -419,12 +432,13 @@ a.button2:hover {
 }
 
 .slidecap h1 {
-    font-size: 36px;
+    font-size: 32px;
     color: #fff;
     font-family: 'Roboto Slab', serif;
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    line-height: 1.3;
 }
 
 .slidecap p {
@@ -574,36 +588,73 @@ a.button2:hover {
 /* Brand Links Bar */
 .links {
     color: #000;
-    margin-top: 30px;
-    padding: 20px 0;
+    margin-top: -15px;
+    padding: 50px 30px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+    border-top: none;
+    border-bottom: 1px solid #e0e0e0;
 }
 
-#footer .links table,
-.links table {
-    background: #FFF none repeat scroll 0 0;
-    border: none;
-    width: 100%;
+.links .content {
     max-width: 1400px;
     margin: 0 auto;
 }
 
+#footer .links table,
+.links table {
+    background: transparent;
+    border: none;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    border-spacing: 22px 0;
+}
+
 #footer .links td,
 .links td {
-    background: #fff none repeat scroll 0 0;
-    border: none;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
     color: #000;
-    padding: 15px 20px;
+    padding: 43px 29px;
     text-align: center;
+    border-radius: 17px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.links td::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #d7002a;
+    border-radius: 12px 12px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.links td:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: #d7002a;
+}
+
+.links td:hover::before {
+    opacity: 1;
 }
 
 .links img {
-    max-height: 55px;
+    max-height: 173px;
     width: auto;
-    transition: opacity 0.3s;
+    transition: all 0.3s ease;
+    filter: grayscale(0%);
 }
 
 .links a:hover img {
-    opacity: 0.7;
+    transform: scale(1.08);
 }
 
 /* Footer Credit */
