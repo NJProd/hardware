@@ -1179,6 +1179,27 @@ a[href^="tel:"].slide-btn i {
     box-shadow: var(--shadow-glow);
 }
 
+.btn-services.secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-services.secondary:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.services-preview-buttons {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.services-preview-buttons .btn-services {
+    margin-top: 0;
+}
+
 .services-preview-image {
     position: relative;
     overflow: hidden;
@@ -1947,17 +1968,17 @@ a[href^="tel:"].slide-btn i {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: var(--space-md);
+    gap: var(--space-lg);
     flex-wrap: nowrap;
 }
 
 .brand-item {
     flex: 1;
-    max-width: 150px;
+    max-width: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-lg);
+    padding: var(--space-xl);
     background: var(--white);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
@@ -1970,7 +1991,7 @@ a[href^="tel:"].slide-btn i {
 }
 
 .brand-item img {
-    max-height: 50px;
+    max-height: 70px;
     max-width: 100%;
     width: auto;
     object-fit: contain;
@@ -2023,8 +2044,9 @@ a[href^="tel:"].slide-btn i {
    SIMPLE FOOTER
    ============================================ */
 .footer-simple {
-    background: var(--gray-900);
+    background: var(--white);
     padding: var(--space-2xl) var(--space-xl) var(--space-lg);
+    border-top: 1px solid var(--gray-200);
 }
 
 .footer-simple-content {
@@ -2035,7 +2057,7 @@ a[href^="tel:"].slide-btn i {
     align-items: center;
     gap: var(--space-xl);
     padding-bottom: var(--space-lg);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--gray-200);
 }
 
 .footer-info {
@@ -2051,7 +2073,7 @@ a[href^="tel:"].slide-btn i {
 
 .footer-details p {
     font-size: 0.85rem;
-    color: var(--gray-400);
+    color: var(--gray-600);
     margin: 2px 0;
 }
 
@@ -2062,12 +2084,12 @@ a[href^="tel:"].slide-btn i {
 }
 
 .footer-details a {
-    color: var(--gray-400);
+    color: var(--gray-600);
     transition: color var(--transition-fast);
 }
 
 .footer-details a:hover {
-    color: var(--white);
+    color: var(--primary);
 }
 
 .footer-nav {
@@ -2077,12 +2099,12 @@ a[href^="tel:"].slide-btn i {
 
 .footer-nav a {
     font-size: 0.9rem;
-    color: var(--gray-400);
+    color: var(--gray-600);
     transition: color var(--transition-fast);
 }
 
 .footer-nav a:hover {
-    color: var(--white);
+    color: var(--primary);
 }
 
 .footer-social-simple {
@@ -2096,9 +2118,9 @@ a[href^="tel:"].slide-btn i {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--gray-100);
     border-radius: var(--radius-full);
-    color: var(--gray-400);
+    color: var(--gray-600);
     transition: all var(--transition-normal);
 }
 
@@ -2756,7 +2778,16 @@ a[href^="tel:"].slide-btn i {
 /* ============================================
    INNER PAGE HERO SECTIONS
    ============================================ */
-.services-hero,
+.services-hero {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/services1.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: var(--space-4xl) var(--space-xl);
+    text-align: center;
+    overflow: hidden;
+}
+
 .about-hero {
     position: relative;
     background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
@@ -2819,102 +2850,56 @@ a[href^="tel:"].slide-btn i {
    SERVICES PAGE STYLES
    ============================================ */
 .services-page #page-wrap {
-    background: var(--gray-100);
-}
-
-.services-intro {
-    text-align: center;
-    padding: var(--space-4xl) var(--space-xl) var(--space-2xl);
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.services-intro h2 {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: var(--space-md);
-}
-
-.services-intro p {
-    font-size: 1.1rem;
-    color: var(--gray-600);
-    line-height: 1.7;
+    background: var(--white);
 }
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--space-lg);
-    padding: 0 var(--space-xl) var(--space-4xl);
+    padding: var(--space-3xl) var(--space-xl);
     max-width: 1400px;
     margin: 0 auto;
 }
 
 .service-card {
     background: var(--white);
-    padding: var(--space-2xl);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md);
-    border: 2px solid transparent;
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
     transition: all var(--transition-normal);
     display: flex;
     flex-direction: column;
-    position: relative;
-    overflow: hidden;
-}
-
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--primary-light));
-    transform: scaleX(0);
-    transition: transform var(--transition-normal);
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-md);
     border-color: var(--primary);
 }
 
-.service-card:hover::before {
-    transform: scaleX(1);
-}
-
 .service-icon {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    border-radius: var(--radius-lg);
-    margin-bottom: var(--space-lg);
-    box-shadow: 0 8px 20px var(--primary-glow);
-    transition: transform var(--transition-normal);
-}
-
-.service-card:hover .service-icon {
-    transform: scale(1.1) rotate(5deg);
+    background: rgba(215, 0, 42, 0.1);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
 }
 
 .service-icon i {
-    font-size: 1.5rem;
-    color: var(--white);
+    font-size: 1.25rem;
+    color: var(--primary);
 }
 
 .service-card h3 {
     font-family: var(--font-display);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--dark);
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
 }
 
 .service-card p {
@@ -2927,14 +2912,15 @@ a[href^="tel:"].slide-btn i {
 
 .service-tag {
     display: inline-block;
-    background: var(--gray-100);
-    color: var(--primary);
-    font-size: 0.75rem;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 0.7rem;
     font-weight: 600;
     padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-sm);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    align-self: flex-start;
 }
 
 /* Services Additional Section */
@@ -3006,41 +2992,24 @@ a[href^="tel:"].slide-btn i {
 
 /* Services CTA Section */
 .services-cta {
-    background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
-    padding: var(--space-4xl) var(--space-xl);
+    background: var(--white);
+    padding: var(--space-3xl) var(--space-xl);
     text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.services-cta::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 60%);
-    pointer-events: none;
+    border-top: 1px solid var(--gray-200);
 }
 
 .services-cta h2 {
     font-family: var(--font-display);
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    color: var(--white);
+    color: var(--dark);
     margin-bottom: var(--space-sm);
-    position: relative;
-    z-index: 1;
 }
 
 .services-cta p {
-    font-size: 1.1rem;
-    color: var(--gray-400);
-    margin-bottom: var(--space-xl);
-    position: relative;
-    z-index: 1;
+    font-size: 1rem;
+    color: var(--gray-600);
+    margin-bottom: var(--space-lg);
 }
 
 .cta-buttons {
@@ -3048,8 +3017,6 @@ a[href^="tel:"].slide-btn i {
     gap: var(--space-md);
     justify-content: center;
     flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
 }
 
 .cta-btn {
@@ -3076,14 +3043,14 @@ a[href^="tel:"].slide-btn i {
 }
 
 .cta-btn.secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--white);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
 }
 
 .cta-btn.secondary:hover {
-    background: var(--white);
-    color: var(--dark);
+    background: var(--primary);
+    color: var(--white);
 }
 
 /* ============================================
