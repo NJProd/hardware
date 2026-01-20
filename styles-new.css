@@ -76,70 +76,8 @@
 }
 
 /* ============================================
-   TOP BAR - CLEAN MINIMAL STYLE
+   TOP BAR - REMOVED (Combined with header)
    ============================================ */
-.top-bar {
-    background: var(--white);
-    padding: var(--space-sm) 0;
-    font-size: 0.85rem;
-    border-bottom: 1px solid var(--gray-200);
-}
-
-.top-bar-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 var(--space-xl);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.top-bar-logo img {
-    height: 50px;
-    width: auto;
-}
-
-.top-bar-info {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-}
-
-.top-bar-info #open_or_closed {
-    background: var(--accent-green);
-    color: var(--white);
-    padding: 2px 10px;
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.top-bar-info #open_or_closed.closed {
-    background: var(--primary);
-}
-
-.top-bar-hours {
-    color: var(--primary);
-}
-
-.top-bar-link {
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    transition: color var(--transition-fast);
-}
-
-.top-bar-link:hover {
-    color: var(--primary-dark);
-}
-
-.top-bar-link i {
-    color: var(--primary);
-    font-size: 0.9rem;
-}
 
 /* ============================================
    MOBILE QUICK CONTACT BAR
@@ -198,10 +136,6 @@
     
     #scroll-top {
         bottom: 90px;
-    }
-    
-    .top-bar {
-        display: none;
     }
 }
 
@@ -314,6 +248,56 @@ button {
     opacity: 0.85;
 }
 
+/* Header Info - Combined contact info */
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: 0.9rem;
+}
+
+.header-info #open_or_closed {
+    background: var(--accent-green);
+    color: var(--white);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.header-info #open_or_closed.closed {
+    background: var(--primary);
+}
+
+.header-hours {
+    color: var(--gray-600);
+    font-size: 0.85rem;
+}
+
+.header-divider {
+    color: var(--gray-300);
+}
+
+.header-link {
+    color: var(--gray-700);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.header-link:hover {
+    color: var(--primary);
+}
+
+.header-link i {
+    color: var(--primary);
+    font-size: 0.85rem;
+}
+
 /* Header Action Buttons */
 .header-actions {
     display: flex;
@@ -360,6 +344,10 @@ button {
         display: none;
     }
     
+    .header-info {
+        display: none;
+    }
+    
     #logo img {
         height: 50px;
     }
@@ -368,13 +356,6 @@ button {
         padding: var(--space-md);
         justify-content: center;
     }
-}
-
-/* ============================================
-   NAVIGATION - SLEEK MODERN STYLE
-   ============================================ */
-    background: var(--primary);
-    color: var(--white);
 }
 
 /* ============================================
