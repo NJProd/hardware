@@ -85,9 +85,22 @@ function initSlider() {
         // Show current slide
         slides[index].classList.add('active');
         
-        // Update caption
+        // Update caption with animation reset
         if (captions[index]) {
             captionDisplay.innerHTML = captions[index].innerHTML;
+            
+            // Re-trigger animations by forcing reflow
+            const h1 = captionDisplay.querySelector('h1');
+            const p = captionDisplay.querySelector('p');
+            const buttons = captionDisplay.querySelector('.slide-buttons');
+            
+            [h1, p, buttons].forEach(el => {
+                if (el) {
+                    el.style.animation = 'none';
+                    el.offsetHeight; // Force reflow
+                    el.style.animation = '';
+                }
+            });
         }
         
         currentSlide = index;

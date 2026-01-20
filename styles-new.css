@@ -223,7 +223,8 @@ button {
 #header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: var(--space-xl);
     padding: var(--space-md) var(--space-xl);
     max-width: 1400px;
     margin: 0 auto;
@@ -286,7 +287,7 @@ button {
     align-items: center;
     gap: var(--space-xs);
     font-weight: 500;
-    transition: color var(--transition-fast);
+    transition: all var(--transition-fast);
 }
 
 .header-link:hover {
@@ -296,6 +297,26 @@ button {
 .header-link i {
     color: var(--primary);
     font-size: 0.85rem;
+}
+
+/* Phone link - more prominent */
+.header-link[href^="tel:"] {
+    background: var(--primary);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+}
+
+.header-link[href^="tel:"] i {
+    color: var(--white);
+}
+
+.header-link[href^="tel:"]:hover {
+    background: var(--primary-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--primary-glow);
 }
 
 /* Header Action Buttons */
@@ -373,22 +394,25 @@ button {
 .menu-wrap .full-wrap {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 var(--space-xl);
 }
 
 /* Main Menu */
 #main-menu {
-    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .menu-navigation-container {
     display: flex;
+    justify-content: center;
 }
 
 .menu-navigation-container > .menu {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-xs);
 }
 
@@ -545,23 +569,10 @@ button {
     color: var(--dark);
 }
 
-.nav-btn.rewards i {
-    color: var(--accent-gold);
-}
-
-.nav-btn.shop {
-    background: var(--primary);
-    color: var(--white);
-}
-
-.nav-btn.shop:hover {
-    background: var(--primary-dark);
-}
-
-@media (max-width: 992px) {
-    .nav-actions {
-        display: none;
-    }
+/* ACE Rewards Nav Item */
+.menu-navigation-container > .menu > li.rewards-item > a i {
+    margin-right: 4px;
+    color: var(--primary);
 }
 
 /* ============================================
@@ -640,6 +651,8 @@ button {
     margin-bottom: var(--space-md);
     text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     letter-spacing: -1px;
+    animation: slideUp 0.8s ease-out forwards;
+    opacity: 0;
 }
 
 .slidecap p {
@@ -647,6 +660,8 @@ button {
     color: var(--gray-300);
     margin-bottom: var(--space-xl);
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
 }
 
 .slide-buttons {
@@ -654,6 +669,31 @@ button {
     gap: var(--space-md);
     justify-content: center;
     flex-wrap: wrap;
+    animation: slideUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+/* Slideshow Text Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .slide-btn {
@@ -691,6 +731,35 @@ button {
     background: var(--white);
     color: var(--dark);
     border-color: var(--white);
+}
+
+/* Call Button - More Prominent */
+.slide-btn.call,
+a[href^="tel:"].slide-btn {
+    background: var(--white);
+    color: var(--primary);
+    border: 2px solid var(--white);
+    font-weight: 700;
+}
+
+.slide-btn.call:hover,
+a[href^="tel:"].slide-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+}
+
+.slide-btn.call i,
+a[href^="tel:"].slide-btn i {
+    animation: pulse-ring 1.5s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 /* Slider Navigation Arrows */
