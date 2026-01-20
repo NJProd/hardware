@@ -296,10 +296,12 @@ function initMobileMenu() {
         if (window.innerWidth <= 992) {
             const menuWrap = document.querySelector('.menu-wrap');
             const header = document.querySelector('#header');
-            // Check if click is outside both menu wrap and header (for the new toggle button)
+            // Check if click is outside menu wrap, header, AND the menu container itself
             const isOutsideMenu = menuWrap && !menuWrap.contains(e.target);
             const isOutsideHeader = header && !header.contains(e.target);
-            if (menuContainer && menuContainer.classList.contains('active') && isOutsideMenu && isOutsideHeader) {
+            const isOutsideContainer = menuContainer && !menuContainer.contains(e.target);
+            // Only close if click is outside all three areas
+            if (menuContainer && menuContainer.classList.contains('active') && isOutsideMenu && isOutsideHeader && isOutsideContainer) {
                 closeMobileMenu();
                 expandedItems.forEach(item => item.classList.remove('open'));
             }
