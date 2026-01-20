@@ -40,8 +40,7 @@
             
             <!-- Header Info -->
             <div class="header-info">
-                <span id="open_or_closed" class="open">Open</span>
-                <span class="header-hours">Mon-Sat 7am-6pm • Sun 8am-6pm</span>
+                <span id="store-status" class="store-status open"><span class="status-dot"></span><span id="status-text">Open until 6pm</span></span>
                 <span class="header-divider">|</span>
                 <a href="tel:8606333551" class="header-link"><i class="fa-solid fa-phone"></i> 860-633-3551</a>
                 <span class="header-divider">|</span>
@@ -52,13 +51,25 @@
             <div id="modal">
                 <div class="modal-content">
                     <div class="copy">
-                        <div class="map-responsive">
-                            <iframe allowfullscreen="" height="450" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.8!2d-72.60!3d41.71!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQyJzM2LjAiTiA3MsKwMzYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1234567890" style="border:0;" width="600"></iframe>
+                        <a class="modal-close-x" href="#">&times;</a>
+                        <div class="modal-header">
+                            <h3><i class="fa-solid fa-location-dot"></i> Visit Us</h3>
                         </div>
-                        <a class="button-close-modal" href="#">Close</a>
+                        <div class="modal-address">
+                            <p class="address-main">Katz ACE Hardware</p>
+                            <p class="address-street">2687 Main Street</p>
+                            <p class="address-city">Glastonbury, CT 06033</p>
+                        </div>
+                        <div class="map-responsive">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.5977088344397!2d-72.60835492346045!3d41.71428787125979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e65b0a6c4a4b4d%3A0x4c8c5c5c5c5c5c5c!2s2687%20Main%20St%2C%20Glastonbury%2C%20CT%2006033!5e0!3m2!1sen!2sus!4v1705700000000!5m2!1sen!2sus" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="modal-actions">
+                            <a href="https://www.google.com/maps/dir//2687+Main+St,+Glastonbury,+CT+06033" target="_blank" class="btn-directions"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
+                            <a href="tel:8606333551" class="btn-call"><i class="fa-solid fa-phone"></i> Call Store</a>
+                        </div>
                     </div>
                 </div>
-                <div class="overlay"></div>
+                <a class="overlay" href="#"></a>
             </div>
         </header>
     </div>

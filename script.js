@@ -280,8 +280,9 @@ function initMobileMenu() {
 
 // Store open/closed status
 function updateStoreStatus() {
-    const statusElement = document.getElementById('open_or_closed');
-    if (!statusElement) return;
+    const statusElement = document.getElementById('store-status');
+    const statusText = document.getElementById('status-text');
+    if (!statusElement || !statusText) return;
     
     const now = new Date();
     const day = now.getDay(); // 0 = Sunday, 1-6 = Mon-Sat
@@ -289,22 +290,44 @@ function updateStoreStatus() {
     const minute = now.getMinutes();
     const currentTime = hour + (minute / 60);
     
-    let isOpen = false;
+    // Store hours: Mon-Sat 7am-6pm, Sun 8am-6pm
+    const isSunday = day === 0;
+    const openTime = isSunday ? 8 : 7;
+    const closeTime = 18; // 6pm
     
-    if (day === 0) {
-        // Sunday: 8am - 6pm
+    let isOpen = false;
+    if (isSunday) {
         isOpen = currentTime >= 8 && currentTime < 18;
     } else if (day >= 1 && day <= 6) {
-        // Monday - Saturday: 7am - 6pm
         isOpen = currentTime >= 7 && currentTime < 18;
     }
     
     if (isOpen) {
-        statusElement.textContent = 'open';
-        statusElement.className = 'open';
+        statusElement.className = 'store-status open';
+        statusText.textContent = 'Open until 6pm';
     } else {
-        statusElement.textContent = 'closed';
-        statusElement.className = 'closed';
+        statusElement.className = 'store-status closed';
+        // Show when store opens next
+        if (day === 0) {
+            if (currentTime < 8) {
+                statusText.textContent = 'Opens at 8am';
+            } else {
+                statusText.textContent = 'Opens Mon 7am';
+            }
+        } else if (day === 6) {
+            // Saturday after close
+            if (currentTime >= 18) {
+                statusText.textContent = 'Opens Sun 8am';
+            } else {
+                statusText.textContent = 'Opens at 7am';
+            }
+        } else {
+            if (currentTime < 7) {
+                statusText.textContent = 'Opens at 7am';
+            } else {
+                statusText.textContent = 'Opens tomorrow 7am';
+            }
+        }
     }
 }
 
