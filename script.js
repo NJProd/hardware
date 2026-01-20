@@ -190,31 +190,47 @@ function initSlider() {
 // Mobile menu toggle
 function initMobileMenu() {
     const navToggle = document.querySelector('.nav-toggle');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const menuContainer = document.querySelector('.menu-navigation-container');
     const expandedItems = document.querySelectorAll('.menu > li.expanded');
     
-    if (navToggle && menuContainer) {
-        navToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            const isActive = menuContainer.classList.toggle('active');
-            navToggle.classList.toggle('active');
-            
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = isActive ? 'hidden' : '';
-            
-            // Update toggle text for accessibility
-            navToggle.setAttribute('aria-expanded', isActive);
-            navToggle.setAttribute('aria-label', isActive ? 'Close navigation menu' : 'Open navigation menu');
-        });
+    // Function to toggle mobile menu
+    function toggleMobileMenu(e) {
+        e.preventDefault();
+        const isActive = menuContainer.classList.toggle('active');
         
-        // Close menu when clicking on the close area (::before pseudo-element area)
+        // Toggle both buttons if they exist
+        if (navToggle) navToggle.classList.toggle('active', isActive);
+        if (mobileMenuToggle) mobileMenuToggle.classList.toggle('active', isActive);
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isActive ? 'hidden' : '';
+    }
+    
+    // Function to close mobile menu
+    function closeMobileMenu() {
+        menuContainer.classList.remove('active');
+        if (navToggle) navToggle.classList.remove('active');
+        if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // Attach click handler to nav toggle (in menu bar)
+    if (navToggle && menuContainer) {
+        navToggle.addEventListener('click', toggleMobileMenu);
+    }
+    
+    // Attach click handler to mobile menu toggle (in header)
+    if (mobileMenuToggle && menuContainer) {
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+    
+    // Close menu when clicking on the close area (::before pseudo-element area)
+    if (menuContainer) {
         menuContainer.addEventListener('click', function(e) {
             // Check if click is in the top 60px (close button area)
             if (e.clientY <= 60 && e.target === menuContainer) {
-                menuContainer.classList.remove('active');
-                navToggle.classList.remove('active');
-                document.body.style.overflow = '';
-                navToggle.setAttribute('aria-expanded', 'false');
+                closeMobileMenu();
             }
         });
     }
@@ -260,9 +276,7 @@ function initMobileMenu() {
                 // Close the menu after a short delay to allow navigation
                 setTimeout(function() {
                     if (window.innerWidth <= 992 && menuContainer.classList.contains('active')) {
-                        menuContainer.classList.remove('active');
-                        navToggle.classList.remove('active');
-                        document.body.style.overflow = '';
+                        closeMobileMenu();
                     }
                 }, 100);
             }
@@ -273,10 +287,12 @@ function initMobileMenu() {
     document.addEventListener('click', function(e) {
         if (window.innerWidth <= 992) {
             const menuWrap = document.querySelector('.menu-wrap');
-            if (menuContainer && menuContainer.classList.contains('active') && !menuWrap.contains(e.target)) {
-                menuContainer.classList.remove('active');
-                navToggle.classList.remove('active');
-                document.body.style.overflow = '';
+            const header = document.querySelector('#header');
+            // Check if click is outside both menu wrap and header (for the new toggle button)
+            const isOutsideMenu = menuWrap && !menuWrap.contains(e.target);
+            const isOutsideHeader = header && !header.contains(e.target);
+            if (menuContainer && menuContainer.classList.contains('active') && isOutsideMenu && isOutsideHeader) {
+                closeMobileMenu();
                 expandedItems.forEach(item => item.classList.remove('open'));
             }
         }
@@ -285,9 +301,7 @@ function initMobileMenu() {
     // Close menu on escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && menuContainer && menuContainer.classList.contains('active')) {
-            menuContainer.classList.remove('active');
-            navToggle.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMobileMenu();
             expandedItems.forEach(item => item.classList.remove('open'));
         }
     });
@@ -301,13 +315,7 @@ function initMobileMenu() {
             
             // Reset menu state on desktop
             if (window.innerWidth > 992) {
-                if (menuContainer) {
-                    menuContainer.classList.remove('active');
-                }
-                if (navToggle) {
-                    navToggle.classList.remove('active');
-                }
-                document.body.style.overflow = '';
+                closeMobileMenu();
                 expandedItems.forEach(item => item.classList.remove('open'));
             }
         }, 100);
