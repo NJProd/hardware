@@ -266,20 +266,28 @@ function initMobileMenu() {
         }
     }
     
-    // Close menu when clicking a non-expandable link
+    // Close menu when clicking a navigation link (not dropdown toggles)
     const menuLinks = document.querySelectorAll('.menu-navigation-container .menu a');
     menuLinks.forEach(function(link) {
         link.addEventListener('click', function(e) {
             const parentLi = link.closest('li');
-            // Only close if not an expanded item (those are handled separately)
-            if (!parentLi.classList.contains('expanded') || parentLi.classList.contains('open')) {
-                // Close the menu after a short delay to allow navigation
-                setTimeout(function() {
-                    if (window.innerWidth <= 992 && menuContainer.classList.contains('active')) {
-                        closeMobileMenu();
-                    }
-                }, 100);
+            const isExpandedParent = parentLi.classList.contains('expanded');
+            const isDirectChild = parentLi.parentElement.classList.contains('menu') && 
+                                  !parentLi.parentElement.classList.contains('submenu');
+            
+            // Don't close menu if this is a top-level dropdown toggle
+            if (isExpandedParent && isDirectChild) {
+                // This is a dropdown toggle, don't close the menu
+                return;
             }
+            
+            // This is an actual navigation link (either non-expandable or submenu item)
+            // Close the menu after a short delay to allow navigation
+            setTimeout(function() {
+                if (window.innerWidth <= 992 && menuContainer.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            }, 100);
         });
     });
     

@@ -426,8 +426,18 @@ button {
         display: none;
     }
     
+    /* Logo wrapper takes remaining space */
+    .logo_wrap {
+        flex: 1;
+        min-width: 0;
+    }
+    
     #logo img {
-        height: 44px;
+        height: auto;
+        max-height: 50px;
+        max-width: calc(100vw - 180px); /* Leave room for buttons */
+        width: auto;
+        object-fit: contain;
         top: 0;
     }
     
@@ -436,10 +446,28 @@ button {
         justify-content: space-between;
         flex-direction: row;
         gap: var(--space-sm);
+        flex-wrap: nowrap;
     }
     
-    /* Hide the separate menu bar on mobile */
+    /* Prevent buttons from shrinking */
+    .mobile-header-actions {
+        flex-shrink: 0;
+    }
+    
+    /* Hide the separate menu bar visual on mobile but keep menu-navigation-container accessible */
     .menu-wrap {
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: visible;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+    
+    .menu-wrap .full-wrap,
+    .menu-wrap .nav-toggle,
+    .menu-wrap .nav-btn {
         display: none;
     }
     
@@ -562,7 +590,31 @@ button {
     }
     
     #logo img {
-        height: 42px;
+        max-height: 44px;
+        max-width: calc(100vw - 160px);
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 340px) {
+    #logo img {
+        max-height: 38px;
+        max-width: calc(100vw - 140px);
+    }
+    
+    .mobile-header-actions {
+        gap: 4px;
+    }
+    
+    .mobile-menu-toggle,
+    .mobile-header-location {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .mobile-header-call {
+        width: 36px;
+        height: 36px;
     }
 }
 
@@ -2894,8 +2946,12 @@ a[href^="tel:"].slide-btn i {
         }
     }
     
-    /* Mobile menu close button - Improved */
+    /* Mobile menu close button - Only shows when menu is active */
     .menu-navigation-container::before {
+        display: none;
+    }
+    
+    .menu-navigation-container.active::before {
         content: '✕  Close';
         display: flex;
         align-items: center;
