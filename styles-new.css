@@ -521,6 +521,8 @@ button {
     color: var(--gray-700);
     border-bottom: 1px solid var(--gray-100);
     transition: all var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
 }
 
 .submenu li:last-child a {
